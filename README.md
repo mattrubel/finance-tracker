@@ -112,11 +112,13 @@ transaction_id,date,description,amount,currency,account_name,category,merchant,t
 ## Data Model (Core Entities)
 
 - `Transaction`
-  - `id`, `externalId`, `date`, `description`, `normalizedDescription`, `amount`, `currency`, `merchantId`, `categoryId`, `accountId`, `type`, `createdAt`, `updatedAt`
+  - `id`, `externalId`, `date`, `description`, `amount`, `currency`, `accountName`, `accountId`, `merchant`, `merchantId`, `category`, `categoryId`, `type`, `attributes`
 - `Category`
-  - `id`, `name`, `parentCategoryId`, `isSystem`
+  - `id`, `name`, `parentCategoryId`, `attributes`
 - `Merchant`
-  - `id`, `name`, `normalizedName`
+  - `id`, `displayName`, `normalizedName`, `attributes`
+- `MerchantCategoryPreference`
+  - `id`, `merchantId`, `categoryId`, `source`, `isActive`, `notes`, `attributes`, `createdAt`, `updatedAt`
 - `Account`
   - `id`, `name`, `institution`, `last4`
 - `ImportBatch`
@@ -156,6 +158,7 @@ transaction_id,date,description,amount,currency,account_name,category,merchant,t
 - ORM/Query layer: `Prisma` or `Drizzle`.
 - Charts: `Recharts` or `ECharts`.
 - Validation: `zod` schemas shared across frontend/backend.
+- API contract: OpenAPI spec at `docs/api/openapi.yaml`.
 
 ## Phased Roadmap
 
@@ -190,4 +193,3 @@ transaction_id,date,description,amount,currency,account_name,category,merchant,t
 4. Build `POST /imports/csv` endpoint with validation report.
 5. Build dashboard API endpoints for monthly/category summaries.
 6. Implement first dashboard and transaction table screens.
-
