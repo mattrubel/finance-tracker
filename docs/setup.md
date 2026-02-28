@@ -14,6 +14,16 @@ pnpm install
 pnpm -r build
 ```
 
+## Generate SQLite migration files
+```bash
+pnpm --filter @finance-tracker/data-access db:generate
+```
+
+## Apply SQLite migrations
+```bash
+pnpm --filter @finance-tracker/data-access db:migrate
+```
+
 ## Typecheck all workspaces
 ```bash
 pnpm -r typecheck

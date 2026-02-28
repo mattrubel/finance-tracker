@@ -4,6 +4,8 @@ import type {
   MerchantCategoryPreference,
   Transaction
 } from "@finance-tracker/shared-types";
+export { db } from "./db/client.js";
+export * from "./db/schema.js";
 
 export interface TransactionRepository {
   list(): Promise<Transaction[]>;

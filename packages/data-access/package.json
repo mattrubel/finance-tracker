@@ -7,12 +7,20 @@
   "types": "src/index.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "db:generate": "drizzle-kit generate --config drizzle.config.ts",
+    "db:migrate": "drizzle-kit migrate --config drizzle.config.ts",
     "dev": "tsc -w -p tsconfig.json",
     "lint": "echo 'No lint configured for @finance-tracker/data-access'",
     "test": "echo 'No tests yet for @finance-tracker/data-access'",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@finance-tracker/shared-types": "workspace:*"
+    "@finance-tracker/shared-types": "workspace:*",
+    "better-sqlite3": "^12.6.2",
+    "drizzle-orm": "^0.45.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "drizzle-kit": "^0.31.9"
   }
 }

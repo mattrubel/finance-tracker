@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1772289920524,
+      "tag": "0000_initial_core_finance_schema",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1772290267232,
+      "tag": "0001_add_import_batches_and_errors",
+      "breakpoints": true
+    }
+  ]
+}
