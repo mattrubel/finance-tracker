@@ -1,0 +1,6 @@
+transaction_id,date,description,amount,currency,account_name,category,merchant,type
+ch_1001,2026-01-03,WHOLE FOODS #102,-84.23,USD,Chase Sapphire,Groceries,Whole Foods,expense
+ch_1002,2026-01-04,NETFLIX.COM,-15.49,USD,Chase Sapphire,Entertainment,Netflix,expense
+ch_1003,2026-01-05,PAYROLL ACME INC,3200.00,USD,Checking,Income,Acme Inc,income
+ch_1004,2026-01-08,SHELL OIL 5743,-42.10,USD,Chase Sapphire,Gas,Shell,expense
+ch_1005,2026-01-10,AMAZON MKTPLACE PMTS,-63.77,USD,Chase Sapphire,Shopping,Amazon,expense
