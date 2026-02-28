@@ -1,4 +1,7 @@
-import type { Transaction } from "@finance-tracker/shared-types";
+import type {
+  MerchantCategoryPreference,
+  Transaction
+} from "@finance-tracker/shared-types";
 
 export interface MonthlySpend {
   month: string;
@@ -21,4 +24,19 @@ export function calculateMonthlySpend(transactions: Transaction[]): MonthlySpend
   return [...totalsByMonth.entries()]
     .sort((a, b) => a[0].localeCompare(b[0]))
     .map(([month, totalExpense]) => ({ month, totalExpense }));
+}
+
+export function resolvePreferredCategoryId(
+  merchantId: string | undefined,
+  preferences: MerchantCategoryPreference[]
+): string | undefined {
+  if (!merchantId) {
+    return undefined;
+  }
+
+  const activePreference = preferences.find(
+    (preference) => preference.isActive && preference.merchantId === merchantId
+  );
+
+  return activePreference?.categoryId;
 }

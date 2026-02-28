@@ -1,0 +1,91 @@
+openapi: 3.1.0
+info:
+  title: Finance Tracker API
+  version: 0.1.0
+  description: |
+    Local-first API for the finance tracker application.
+
+    This spec starts with the current scaffolded endpoints and should be
+    expanded as import, transaction, and category APIs are added.
+servers:
+  - url: http://localhost:4000
+    description: Local development server
+tags:
+  - name: Health
+  - name: Analytics
+paths:
+  /health:
+    get:
+      tags: [Health]
+      operationId: getHealth
+      summary: Health check endpoint
+      responses:
+        "200":
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+
+  /analytics/monthly-spend:
+    get:
+      tags: [Analytics]
+      operationId: getMonthlySpend
+      summary: Get aggregated monthly spend
+      description: Returns expense totals grouped by month.
+      responses:
+        "200":
+          description: Monthly spend aggregation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MonthlySpendResponse"
+        "404":
+          description: Endpoint not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        status:
+          type: string
+          const: ok
+      required: [status]
+
+    MonthlySpendPoint:
+      type: object
+      additionalProperties: false
+      properties:
+        month:
+          type: string
+          pattern: '^[0-9]{4}-[0-9]{2}$'
+          example: "2026-01"
+        totalExpense:
+          type: number
+          example: 2480.45
+      required: [month, totalExpense]
+
+    MonthlySpendResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        monthlySpend:
+          type: array
+          items:
+            $ref: "#/components/schemas/MonthlySpendPoint"
+      required: [monthlySpend]
+
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        error:
+          type: string
+          example: Not found
+      required: [error]
