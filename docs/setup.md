@@ -19,6 +19,18 @@ pnpm -r build
 pnpm -r typecheck
 ```
 
+## Run unit tests
+```bash
+pnpm test
+```
+
+## Run unit tests with coverage
+```bash
+pnpm test:coverage
+```
+
+Coverage output is written to `coverage/` (`lcov`, `json-summary`, and terminal text report).
+
 ## Start API (after build)
 ```bash
 pnpm --filter @finance-tracker/api start

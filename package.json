@@ -8,11 +8,16 @@
     "build": "pnpm -r build",
     "dev": "pnpm -r --parallel dev",
     "lint": "pnpm -r lint",
-    "test": "pnpm -r test",
-    "typecheck": "pnpm -r typecheck"
+    "test": "pnpm run test:unit",
+    "test:unit": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "pnpm -r typecheck",
+    "ci": "pnpm typecheck && pnpm build && pnpm test:coverage"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
-    "typescript": "^5.9.0"
+    "@vitest/coverage-v8": "^2.1.8",
+    "typescript": "^5.9.0",
+    "vitest": "^2.1.8"
   }
 }
